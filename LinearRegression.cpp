@@ -1,29 +1,39 @@
 #include <bits/stdc++.h>
 using namespace std;
-int LinearRegression(vector<int> &array, int Target)
+int BinarySearch(vector<int> &array, int Target, int Left, int Right)
 {
-    int n = array.size();
-    for (size_t i = 0; i < n; i++)
+    while (Left <= Right)
     {
-        if (array[i] == Target)
+        int mid = Left + (Right - Left) / 2;
+        if (array[mid] == Target)
         {
-            return i;
+            return mid;
+        }
+        else if (array[mid] > Target)
+        {
+            Right = mid - 1;
+        }
+        else
+        {
+            Left = mid + 1;
         }
     }
     return -1;
 }
 int main()
 {
-    vector<int> array = {1, 4, 2, 5, 7, 9};
-    int Target = 4;
-    int A = LinearRegression(array, Target);
-    if (A != -1)
+    vector<int> array = {1, 2, 3, 4, 5, 6};
+    int Target = 3;
+    int Left = 0;
+    int Right = array.size() - 1;
+    int a = BinarySearch(array, Target, Left, Right);
+    if (a != -1)
     {
         cout << "The Target Element is Found!!";
     }
     else
     {
-        cout << "The Target Element is NOT Found!!";
+        cout << "The Target  Element is NOT Found!!";
     }
     return 0;
 }
