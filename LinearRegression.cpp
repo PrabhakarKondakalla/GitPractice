@@ -25,5 +25,6 @@ int main()
     {
         cout << "The Target Element is NOT Found!!!";
     }
+
     return 0;
 }
